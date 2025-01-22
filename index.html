@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Text Effect</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            position: relative;
+            font-family: Arial, sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: left;
+            overflow: hidden;
+        }
+
+        #background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 1);
+            z-index: 1;
+            clip-path: polygon(
+                0% -1007%, 0% 100%, 100% 103%,100% -1000008%, /* Внешний прямоугольник */
+
+                /* Первый прозрачный прямоугольник */
+                25% 40%, 55% 40%, 55% 50%, 25% 50%,  
+                
+                /* Второй прозрачный прямоугольник */
+                30% 60%, 60% 60%, 60% 70%, 30% 70%,  
+                
+                /* Третий прозрачный прямоугольник */
+                35% 80%, 65% 80%, 65% 90%, 35% 90%,  
+                
+                /* Четвертый прозрачный прямоугольник */
+                34% 20%, 45% 20%, 45% 30%, 34% 30%
+            );
+        }
+
+        .text-overlay {
+            font-size: 3rem;
+            font-weight: bold;
+            line-height: 1.2;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .text-overlay p {
+            margin-bottom: 20px;
+        }
+
+        .text-overlay span {
+            display: inline-block;
+            width: 150px;
+            height: 50px;
+            position: relative;
+            overflow: hidden;
+            vertical-align: middle;
+        }
+        .box1, .box2, .box3, .box4 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            inset: 0;
+            mix-blend-mode: multiply;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay loop muted playsinline id="background-video">
+        <source src="video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="overlay"></div>
+    <div class="text-overlay">
+        <p>We’re here <span class="box1"></span> to make</p>
+        <p>healthy <span class="box2"></span> living effortless,</p>
+        <p>so you can <span class="box3"></span> live longer</p>
+        <p>and happier <span class="box4"></span></p>
+    </div>
+</body>
+</html>
